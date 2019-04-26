@@ -1,0 +1,28 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+html, body {
+  height: 100%;
+}
+
+.app {
+  display: flex;  
+}
+
+.sidebar-wrapper {
+  width: 350px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+#root {
+  height: 100%;
+}
