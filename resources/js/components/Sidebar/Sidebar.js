@@ -10,16 +10,17 @@ const Container = styled.div`
   background: #f3f3f3;
   height: 100%;
   min-height: 100%;
-  overflow: scroll;
+  overflow: scroll;  
 `;
 
 const Wrapper = styled.div`
   height: 100%;
   min-height: 100%;
+  position: relative;
 `;
 
 const Sidebar = ({
-  setDocumentUrl
+  setDocumentInfo
 }) => {
   const [documents, setDocuments] = useState([]);
   const [activeDocumentId, setActiveDocumentId] = useState(null);
@@ -29,7 +30,10 @@ const Sidebar = ({
     setDocuments(res.data);
     if (res.data.length > 0) {
       setActiveDocumentId(res.data[0].id);
-      setDocumentUrl(res.data[0].url);
+      setDocumentInfo({
+        url: res.data[0].url, 
+        title: `Document #1`,
+      });
     }
   }
 
@@ -37,9 +41,12 @@ const Sidebar = ({
     fetchDocuments();
   }, []);
 
-  const selectDocument = document => {
+  const selectDocument = (document, index) => {
     setActiveDocumentId(document.id);
-    setDocumentUrl(document.url);
+    setDocumentInfo({
+      url: document.url, 
+      title: `Document ${index + 1}`,
+    });
   }
 
   const handleOnUploadFile = document => {

@@ -8,12 +8,16 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: #f3f3f3;
 `;
 
 const Title = styled.div`  
   font-size: 18px;
   font-weight: bold;
-  color: #3a4165;
+  color: #3a4165;  
 `;
 
 const UploadButton = styled.label`  

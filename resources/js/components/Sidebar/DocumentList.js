@@ -33,7 +33,11 @@ const Uploader = styled.div`
 const DocumentList = ({ documents, activeDocumentId, onSelectDocument }) => (
   <Container>
     {documents.map((document, index) => (
-      <DocumentItem key={document.id} onClick={() => onSelectDocument(document)} active={document.id === activeDocumentId}>
+      <DocumentItem 
+        key={document.id} 
+        onClick={() => onSelectDocument(document, index)} 
+        active={document.id === activeDocumentId}
+      >
         <DocumentTitle>Document #{index + 1}</DocumentTitle>
         <Uploader>{document.uploader}</Uploader>
       </DocumentItem>

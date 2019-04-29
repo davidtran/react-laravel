@@ -22,7 +22,7 @@ Route::get('/documents', function() {
     $documents = DB::select('select * from documents');
     // echo asset('storage/'.$documents[0]->filename);
     foreach ($documents as $document) {
-        $document->url = asset('storage/'.$documents[0]->filename);
+        $document->url = asset('storage/'.$document->filename);
     }
     return $documents;    
 });

@@ -66096,15 +66096,16 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject());
 
 var App = function App() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
       _useState2 = _slicedToArray(_useState, 2),
-      documentUrl = _useState2[0],
-      setDocumentUrl = _useState2[1];
+      documentInfo = _useState2[0],
+      setDocumentInfo = _useState2[1];
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    setDocumentUrl: setDocumentUrl
+    setDocumentInfo: setDocumentInfo
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DocumentViewer__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    url: documentUrl
+    url: documentInfo.url,
+    title: documentInfo.title
   }));
 };
 
@@ -66124,6 +66125,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  background: #4077e4;\n  color: white;\n  font-size: 20px;\n  font-weight: bold;\n  padding: 0 20px;\n  height: 48px;\n  box-sizing: border-box;\n  line-height: 48px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n  flex-grow: 1;\n"]);
 
@@ -66139,10 +66150,12 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+var Header = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
 
 var DocumentViewer = function DocumentViewer(_ref) {
-  var url = _ref.url;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+  var title = _ref.title,
+      url = _ref.url;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Header, null, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
     src: url,
     width: "100%",
     height: "100%",
@@ -66235,7 +66248,7 @@ var DocumentList = function DocumentList(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DocumentItem, {
       key: document.id,
       onClick: function onClick() {
-        return onSelectDocument(document);
+        return onSelectDocument(document, index);
       },
       active: document.id === activeDocumentId
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DocumentTitle, null, "Document #", index + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Uploader, null, document.uploader));
@@ -66278,7 +66291,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["  \n  font-size: 18px;\n  font-weight: bold;\n  color: #3a4165;\n"]);
+  var data = _taggedTemplateLiteral(["  \n  font-size: 18px;\n  font-weight: bold;\n  color: #3a4165;  \n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -66288,7 +66301,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  padding: 10px 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.2);\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding: 10px 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.2);\n  position: sticky;\n  top: 0;\n  left: 0;\n  background: #f3f3f3;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -66395,7 +66408,7 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  min-height: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  min-height: 100%;\n  position: relative;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -66405,7 +66418,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  width: 300px;\n  background: #f3f3f3;\n  height: 100%;\n  min-height: 100%;\n  overflow: scroll;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 300px;\n  background: #f3f3f3;\n  height: 100%;\n  min-height: 100%;\n  overflow: scroll;  \n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -66425,7 +66438,7 @@ var Container = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_t
 var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2());
 
 var Sidebar = function Sidebar(_ref) {
-  var setDocumentUrl = _ref.setDocumentUrl;
+  var setDocumentInfo = _ref.setDocumentInfo;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -66459,7 +66472,10 @@ var Sidebar = function Sidebar(_ref) {
 
               if (res.data.length > 0) {
                 setActiveDocumentId(res.data[0].id);
-                setDocumentUrl(res.data[0].url);
+                setDocumentInfo({
+                  url: res.data[0].url,
+                  title: "Document #1"
+                });
               }
 
             case 5:
@@ -66476,9 +66492,12 @@ var Sidebar = function Sidebar(_ref) {
     fetchDocuments();
   }, []);
 
-  var selectDocument = function selectDocument(document) {
+  var selectDocument = function selectDocument(document, index) {
     setActiveDocumentId(document.id);
-    setDocumentUrl(document.url);
+    setDocumentInfo({
+      url: document.url,
+      title: "Document ".concat(index + 1)
+    });
   };
 
   var handleOnUploadFile = function handleOnUploadFile(document) {

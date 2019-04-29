@@ -10,11 +10,11 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  const [documentUrl, setDocumentUrl] = useState(null);
+  const [documentInfo, setDocumentInfo] = useState({});
   return (
     <Container>
-      <Sidebar setDocumentUrl={setDocumentUrl} />
-      <DocumentViewer url={documentUrl} />
+      <Sidebar setDocumentInfo={setDocumentInfo} />
+      <DocumentViewer url={documentInfo.url} title={documentInfo.title}/>
     </Container>
   )
 }
